@@ -1,9 +1,9 @@
 {
-  "name": "payload-plugin-template",
-  "version": "3.0.0-beta.0",
-  "homepage:": "https://payloadcms.com",
-  "description": "Payload plugin template",
-  "author": "dev@payloadcms.com",
+  "name": "@atalienet/payload-plugin-cloud-media",
+  "version": "0.0.1",
+  "homepage:": "https://www.atalie.net",
+  "description": "Payload plugin for cloud media services like Gyazo API",
+  "author": "hello@atalie.net",
   "license": "MIT",
   "files": [
     "dist",
@@ -70,5 +70,6 @@
       "default": "./src/index.ts",
       "types": "./src/index.ts"
     }
-  }
+  },
+  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
 }
