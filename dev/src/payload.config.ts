@@ -4,7 +4,8 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import { testEmailAdapter } from './emailAdapter'
-import { myPlugin } from 'payload-plugin-template'
+// import { cloudMedia } from '@atalienet/payload-plugin-cloud-media'
+import { cloudMedia } from '../../src/plugin'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -37,6 +38,13 @@ export default buildConfig({
           name: 'content',
           type: 'richText',
         },
+        {
+          name: 'blocks',
+          type: 'blocks',
+          blocks: [
+            cloudMedia,
+          ],
+        },
       ],
     },
     {
@@ -57,27 +65,8 @@ export default buildConfig({
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'SOME_SECRET',
   typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
+    outputFile: path.resolve(dirname, 'payload-index.ts'),
   },
   plugins: [
-    myPlugin({
-      debug: true,
-    }),
   ],
-  async onInit(payload) {
-    const existingUsers = await payload.find({
-      collection: 'users',
-      limit: 1,
-    })
-
-    if (existingUsers.docs.length === 0) {
-      await payload.create({
-        collection: 'users',
-        data: {
-          email: 'dev@payloadcms.com',
-          password: 'test',
-        },
-      })
-    }
-  },
 })
