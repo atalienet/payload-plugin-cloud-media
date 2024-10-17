@@ -1,0 +1,2 @@
+export { cloudMedia } from './plugin';
+
